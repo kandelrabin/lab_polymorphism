@@ -8,13 +8,13 @@ public abstract class Vehicle {
     protected String fuelType;
     protected boolean engineStatus;
 
-    public Vehicle(String name, double rentalPrice, String travelType, int maximumOccupancy, boolean publicTravel, String fuelType){
+    public Vehicle(String name, double rentalPrice, String travelType, int maximumOccupancy, boolean publicTravel){
         this.name = name;
         this.rentalPrice = rentalPrice;
         this.travelType = travelType;
         this.maximumOccupancy = maximumOccupancy;
         this.publicTravel = publicTravel;
-        this.fuelType = fuelType;
+        this.fuelType = "";
         this.engineStatus = false;
     }
 
@@ -42,6 +42,10 @@ public abstract class Vehicle {
         return this.publicTravel;
     }
 
+    public boolean getEngineStatus(){
+        return this.engineStatus;
+    }
+
     public void startEngine(){
         if (!this.engineStatus) this.engineStatus = true;
     }
@@ -50,7 +54,5 @@ public abstract class Vehicle {
         if(this.engineStatus) this.engineStatus = false;
     }
 
-    public boolean getEngineStatus(){
-        return this.engineStatus;
-    }
+
 }

@@ -14,10 +14,10 @@ public class Helicopter extends Vehicle{
     }
 
     public String takeOff(){
-        if (this.engineStatus && !this.inSky) {
+        if (this.getEngineStatus() && !this.inSky) {
             this.inSky = true;
             return "I am taking off!";
-        } else if(this.engineStatus && this.inSky){
+        } else if(this.getEngineStatus() && this.inSky){
             return "Already in the sky";
         }
         else{

@@ -6,7 +6,7 @@ public abstract class Vehicle {
     private int maximumOccupancy;
     private boolean publicTravel;
     protected String fuelType;
-    protected boolean engineStatus;
+    private boolean engineStatus;
 
     public Vehicle(String name, double rentalPrice, String travelType, int maximumOccupancy, boolean publicTravel){
         this.name = name;

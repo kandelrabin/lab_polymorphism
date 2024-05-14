@@ -12,7 +12,7 @@ public class Train extends Vehicle{
     }
 
     public String accelerate(){
-        if (this.engineStatus) {
+        if (this.getEngineStatus()) {
             return "I am accelerating!";
         } else {
             return "Engine is turned off!";

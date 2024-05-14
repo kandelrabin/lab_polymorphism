@@ -1,2 +1,42 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 public class TrainTest {
+
+    Train train;
+
+    @BeforeEach
+    public void setUp(){
+        train = new Train("Thomas", "London", "Manchester", 5000.00, "Rail", 200, true);
+    }
+
+    @Test
+    public void canAccelerate(){
+        assertThat(train.accelerate()).isEqualTo("Engine is turned off!");
+        train.startEngine();
+        assertThat(train.accelerate()).isEqualTo("I am accelerating!");
+    }
+
+    @Test
+    public void canBrake(){
+        assertThat(train.brake()).isEqualTo("I am braking!");
+    }
+
+    @Test
+    public void canGetDepartStation(){
+        assertThat(train.getDepartStation()).isEqualTo("London");
+    }
+
+    @Test
+    public void canGetFinalStation(){
+        assertThat(train.getFinalStation()).isEqualTo("Manchester");
+    }
+
+    @Test
+    public void canGetNumberOfWheels(){
+        assertThat(train.getNumberOfWheels()).isEqualTo(40);
+    }
+
 }

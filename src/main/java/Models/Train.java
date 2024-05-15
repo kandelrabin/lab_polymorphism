@@ -1,14 +1,14 @@
+package Models;
+
 public class Train extends Vehicle{
 
     private String departStation;
     private String finalStation;
-    private int numberOfWheels;
 
-    public Train(String name, String departStation, String finalStation, double rentalPrice, String travelType, int maximumOccupancy, boolean publicTravel){
-        super(name, rentalPrice, travelType, maximumOccupancy, publicTravel);
+    public Train(String name, String departStation, String finalStation, double rentalPrice, int rentalDuration){
+        super(name, rentalPrice, rentalDuration);
         this.departStation = departStation;
         this.finalStation = finalStation;
-        this.numberOfWheels = 40;
     }
 
     public String accelerate(){
@@ -27,12 +27,20 @@ public class Train extends Vehicle{
         return this.departStation;
     }
 
+    public void setDepartStation(String departStation){
+        this.departStation = departStation;
+    }
+
     public String getFinalStation(){
         return this.finalStation;
     }
 
-    public int getNumberOfWheels(){
-        return this.numberOfWheels;
+    public void setFinalStation(String finalStation) {
+        this.finalStation = finalStation;
     }
 
+    @Override
+    public double calculateCost() {
+        return this.getRentalDuration()*this.getRentalPrice();
+    }
 }

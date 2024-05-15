@@ -1,15 +1,14 @@
+package Models;
+
 public class Car extends Vehicle {
 
     private String model;
     private int year;
-    private int numberOfWheels;
-    public boolean isPremiumFuel;
 
-    public Car(String name, String model, int year, double rentalPrice, String travelType, int maximumOccupancy, boolean publicTravel){
-        super(name, rentalPrice, travelType, maximumOccupancy, publicTravel);
+    public Car(String name, String model, int year, double rentalPrice, int rentalDuration){
+        super(name, rentalPrice, rentalDuration);
         this.model = model;
         this.year = year;
-        this.numberOfWheels = 4;
     }
 
     public String accelerate(){
@@ -28,21 +27,28 @@ public class Car extends Vehicle {
         return this.model;
     }
 
+    public void setModel(String model){
+        this.model = model;
+    }
+
     public int getYear(){
         return this.year;
     }
 
-    public int getNumberOfWheels(){
-        return this.numberOfWheels;
+    public void setYear(int year) {
+        this.year = year;
     }
 
+    // Method overloading
     public void setFuelType(String fuelType, boolean isPremiumFuel){
-        this.fuelType = fuelType;
-        this.isPremiumFuel = isPremiumFuel;
+        this.setFuelType("Fuel: " + fuelType + ", Premium Fuel: "+ isPremiumFuel);
     }
 
-    public String getFuelType(){
-        return "Fuel: " + this.fuelType + ", Premium Fuel: "+ this.isPremiumFuel;
+    // Implementation of Interface method
+    @Override
+    public double calculateCost(){
+        return (double) this.getRentalDuration()*this.getRentalPrice();
     }
+
 
 }

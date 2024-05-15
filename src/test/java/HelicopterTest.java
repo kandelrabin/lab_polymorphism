@@ -1,3 +1,4 @@
+import Models.Helicopter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,13 +10,9 @@ public class HelicopterTest {
 
     @BeforeEach
     public void setUp(){
-        helicopter = new Helicopter("Batcopter", 1500.00, "Air", 7, false, "Heathrow");
+        helicopter = new Helicopter("Batcopter", "Heathrow", 2000.00, 1);
     }
 
-    @Test
-    public void canCheckIsInSky(){
-        assertThat(helicopter.isInSky()).isEqualTo(false);
-    }
 
     @Test
     public void canTakeOff(){
@@ -39,14 +36,25 @@ public class HelicopterTest {
     }
 
     @Test
-    public void canGetFuelType(){
-        assertThat(helicopter.getFuelType()).isEqualTo("");
+    public void cansetAirport(){
+        helicopter.setAirport("Gatwick");
+        assertThat(helicopter.getAirport()).isEqualTo("Gatwick");
+    }
+
+    public void canGetIsInSky(){
+        assertThat(helicopter.getIsInSky()).isEqualTo(false);
     }
 
     @Test
-    public void canSetFuelType(){
-        helicopter.setFuelType("Jet Fuel");
-        assertThat(helicopter.getFuelType()).isEqualTo("Jet Fuel");
+    public void canSetIsInSky(){
+        helicopter.setIsInSky(true);
+        assertThat(helicopter.getIsInSky()).isEqualTo(true);
+    }
+
+    @Test
+    public void canCalculateCost(){
+        double expected = helicopter.getRentalPrice() * helicopter.getRentalDuration();
+        assertThat(helicopter.calculateCost()).isEqualTo(expected);
     }
 
 }

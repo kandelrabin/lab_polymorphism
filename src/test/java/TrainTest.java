@@ -1,3 +1,4 @@
+import Models.Train;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ public class TrainTest {
 
     @BeforeEach
     public void setUp(){
-        train = new Train("Thomas", "London", "Manchester", 5000.00, "Rail", 200, true);
+        train = new Train("NWR", "London", "Manchester", 5000.00, 3);
     }
 
     @Test
@@ -30,13 +31,26 @@ public class TrainTest {
     }
 
     @Test
+    public void canSetDepartStation(){
+        train.setDepartStation("Guildford");
+        assertThat(train.getDepartStation()).isEqualTo("Guildford");
+    }
+
+    @Test
     public void canGetFinalStation(){
         assertThat(train.getFinalStation()).isEqualTo("Manchester");
     }
 
     @Test
-    public void canGetNumberOfWheels(){
-        assertThat(train.getNumberOfWheels()).isEqualTo(40);
+    public void canSetFinalStation(){
+        train.setFinalStation("Southampton");
+        assertThat(train.getFinalStation()).isEqualTo("Southampton");
+    }
+
+    @Test
+    public void canCalculateCost(){
+        double expected = train.getRentalPrice() * train.getRentalDuration();
+        assertThat(train.calculateCost()).isEqualTo(expected);
     }
 
 }

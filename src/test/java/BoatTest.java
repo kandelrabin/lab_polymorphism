@@ -1,3 +1,4 @@
+import Models.Boat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ public class BoatTest {
 
     @BeforeEach
     public void setUp(){
-        boat = new Boat("River Navigator", 900.00, "Water", 10, false, "Docklands");
+        boat = new Boat("River Navigator",  "Docklands", 700.00, 2);
     }
 
     @Test
@@ -22,6 +23,18 @@ public class BoatTest {
     @Test
     public void canGetHarbor(){
         assertThat(boat.getHarbor()).isEqualTo("Docklands");
+    }
+
+    @Test
+    public void canSetHarbor(){
+        boat.setHarbor("Kingston Upon Thames");
+        assertThat(boat.getHarbor()).isEqualTo("Kingston Upon Thames");
+    }
+
+    @Test
+    public void canCalculateCost(){
+        double expected = boat.getRentalPrice() * boat.getRentalDuration();
+        assertThat(boat.calculateCost()).isEqualTo(expected);
     }
 
 }

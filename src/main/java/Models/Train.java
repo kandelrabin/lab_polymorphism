@@ -43,4 +43,9 @@ public class Train extends Vehicle{
     public double calculateCost() {
         return this.getRentalDuration()*this.getRentalPrice();
     }
+
+    @Override
+    public String readPassengerMessage(){
+        return "Loving the scenery." + " I am on a "+ this.getName() + " train.";
+    }
 }

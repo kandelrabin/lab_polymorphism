@@ -57,4 +57,9 @@ public class HelicopterTest {
         assertThat(helicopter.calculateCost()).isEqualTo(expected);
     }
 
+    @Test
+    public void canReadPassengerMessage(){
+        String message = helicopter.readPassengerMessage();
+        assertThat(message).isEqualTo("I love my Batcopter we are flying high!!!");
+    }
 }

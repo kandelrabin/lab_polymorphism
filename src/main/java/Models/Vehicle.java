@@ -73,4 +73,6 @@ public abstract class Vehicle implements Hireable {
     }
 
 
+    public abstract String readPassengerMessage();
+
 }

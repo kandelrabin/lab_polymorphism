@@ -8,7 +8,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class VehicleHireShopTest {
 
     VehicleHireShop vehicleHireShop;
-    Accessory satNav;
+    Hireable satNav;
     Car car;
     Boat boat;
     Helicopter helicopter;
@@ -38,24 +38,24 @@ public class VehicleHireShopTest {
     @Test
     public void canAddItemToCatalogue(){
         String key = car.getName()+car.getModel()+car.getYear();
-        vehicleHireShop.addItemToHiredItems(key, car);
-        assertThat(vehicleHireShop.getItemFromHiredItems(key)).isEqualTo(car);
+        vehicleHireShop.addToHiredItems(key, car);
+        assertThat(vehicleHireShop.getFromHiredItems(key)).isEqualTo(car);
     }
 
     @Test
     public void canGetItemFromCatalogue(){
-        int result = vehicleHireShop.getHiredItemsSize();
+        int result = vehicleHireShop.countHiredItems();
         assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void removeItemFromCatalogue(){
-        vehicleHireShop.addItemToHiredItems("car001", car);
-        vehicleHireShop.addItemToHiredItems("train001", train);
-        assertThat(vehicleHireShop.getHiredItemsSize()).isEqualTo(2);
+        vehicleHireShop.addToHiredItems("car001", car);
+        vehicleHireShop.addToHiredItems("train001", train);
+        assertThat(vehicleHireShop.countHiredItems()).isEqualTo(2);
 
-        vehicleHireShop.removeItemFromHiredItems("train001");
-        assertThat(vehicleHireShop.getHiredItemsSize()).isEqualTo(1);
+        vehicleHireShop.removeFromHiredItems("train001");
+        assertThat(vehicleHireShop.countHiredItems()).isEqualTo(1);
     }
 
     @Test
@@ -71,9 +71,10 @@ public class VehicleHireShopTest {
 
     @Test
     public void canCalculateHiredItemsEarnings(){
-        vehicleHireShop.addItemToHiredItems("car001", car);
-        vehicleHireShop.addItemToHiredItems("train001", train);
-        double expected = car.calculateCost() + train.calculateCost();
+        vehicleHireShop.addToHiredItems("acc001", satNav);
+        vehicleHireShop.addToHiredItems("car001", car);
+        vehicleHireShop.addToHiredItems("train001", train);
+        double expected = satNav.calculateCost() +car.calculateCost() + train.calculateCost();
         double result = vehicleHireShop.calculateHiredItemsEarnings();
         assertThat(result).isEqualTo(expected);
     }

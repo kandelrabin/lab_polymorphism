@@ -30,5 +30,8 @@ public class Boat extends Vehicle{
         return this.getRentalDuration()*this.getRentalPrice();
     }
 
-
+    @Override
+    public String readPassengerMessage(){
+        return "I am on a "+ this.getName() + " boat.";
+    }
 }

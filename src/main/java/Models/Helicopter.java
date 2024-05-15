@@ -54,5 +54,9 @@ public class Helicopter extends Vehicle{
         return (double) this.getRentalDuration()*this.getRentalPrice();
     }
 
+    @Override
+    public String readPassengerMessage(){
+        return "I love my " + this.getName() + " we are flying high!!!";
+    }
 
 }

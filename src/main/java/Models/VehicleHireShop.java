@@ -25,19 +25,19 @@ public class VehicleHireShop {
         this.name = name;
     }
 
-    public void addItemToHiredItems(String key, Hireable hireable){
+    public void addToHiredItems(String key, Hireable hireable){
         this.hiredItems.put(key, hireable);
     }
 
-    public Hireable getItemFromHiredItems(String key){
+    public Hireable getFromHiredItems(String key){
         return this.hiredItems.get(key);
     }
 
-    public void removeItemFromHiredItems(String key){
+    public void removeFromHiredItems(String key){
         this.hiredItems.remove(key);
     }
 
-    public int getHiredItemsSize(){
+    public int countHiredItems(){
         return this.hiredItems.size();
     }
 

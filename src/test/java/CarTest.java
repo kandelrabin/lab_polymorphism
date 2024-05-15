@@ -62,12 +62,6 @@ public class CarTest {
         assertThat(car.getFuelType()).isEqualTo("");
     }
 
-    @Test
-    public void canSetFuelType(){
-        car.setFuelType("Petrol");
-        assertThat(car.getFuelType()).isEqualTo("Petrol");
-    }
-
 
     @Test
     public void canGetEngineStatus(){
@@ -125,11 +119,15 @@ public class CarTest {
     }
 
     @Test
-    public void canSetPremiumFuelType(){
+    public void canSetFuelType(){
         car.setFuelType("Petrol");
         assertThat(car.getFuelType()).isEqualTo("Petrol");
+
         car.setFuelType("Petrol", true);
         assertThat(car.getFuelType()).isEqualTo("Fuel: Petrol, Premium Fuel: true");
+
+        car.setFuelType("Diesel", false, true);
+        assertThat(car.getFuelType()).isEqualTo("Fuel: Diesel, Premium Fuel: false, Low Carbon: true");
     }
 
     @Test
@@ -138,5 +136,10 @@ public class CarTest {
         assertThat(car.calculateCost()).isEqualTo(expected);
     }
 
+    @Test
+    public void canReadPassengerMessage(){
+        String message = car.readPassengerMessage();
+        assertThat(message).isEqualTo("I love my Mercedes");
+    }
 
 }

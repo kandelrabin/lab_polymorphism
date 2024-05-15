@@ -37,4 +37,10 @@ public class BoatTest {
         assertThat(boat.calculateCost()).isEqualTo(expected);
     }
 
+    @Test
+    public void canReadPassengerMessage(){
+        String message = boat.readPassengerMessage();
+        assertThat(message).isEqualTo("I am on a River Navigator boat.");
+    }
+
 }

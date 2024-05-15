@@ -44,10 +44,20 @@ public class Car extends Vehicle {
         this.setFuelType("Fuel: " + fuelType + ", Premium Fuel: "+ isPremiumFuel);
     }
 
+    // Method overloading
+    public void setFuelType(String fuelType, boolean isPremiumFuel, boolean isLowCarbon){
+        this.setFuelType("Fuel: " + fuelType + ", Premium Fuel: " + isPremiumFuel + ", Low Carbon: "+isLowCarbon);
+    }
+
     // Implementation of Interface method
     @Override
     public double calculateCost(){
         return (double) this.getRentalDuration()*this.getRentalPrice();
+    }
+
+    @Override
+    public String readPassengerMessage(){
+        return "I love my " + this.getName();
     }
 
 

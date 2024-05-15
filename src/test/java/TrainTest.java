@@ -53,4 +53,10 @@ public class TrainTest {
         assertThat(train.calculateCost()).isEqualTo(expected);
     }
 
+    @Test
+    public void canReadPassengerMessage(){
+        String message = train.readPassengerMessage();
+        assertThat(message).isEqualTo("Loving the scenery. I am on a NWR train.");
+    }
+
 }
